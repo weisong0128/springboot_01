@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+	namespace：命名空间，其值为某一个dao层类的具体路径
+ -->
+<mapper namespace="com.java.mapper.UserMapper">
+    <!-- sql语句保存在Mybatis的局部配置文件中 -->
+    <!--
+        select标签存放查询语句(List<User>)
+            id:在整个配置文件中id值必须唯一，其值与dao层类中的方法名保持一致
+            resultType：指定当前sql查询语句返回的数据类型。类型不是为sql语句的最终类型，而是某一条数据的类型
+     -->
+    <select id="findAllUsers" resultType="Map">
+        SELECT * FROM banks
+    </select>
+</mapper>
