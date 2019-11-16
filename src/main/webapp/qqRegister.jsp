@@ -14,55 +14,58 @@
     <script type="text/javascript" src="<%=basePath %>/static/js/jsonHandler.js"></script>
 </head>
 <body>
-<center>
-    <%--套一个form表单,需要触发ajax--%>
-    <form action="javascript:void(0)" id="fm">
-        <table border="1px">
-            <tr>
-                <td>昵称</td>
-                <td><input type="text" name="nick"></td>
-            </tr>
-            <tr>
-                <td>密码</td>
-                <td><input type="text" name="pwd"></td>
-            </tr>
-            <tr>
-                <td>手机号</td>
-                <td><input type="text" name="phone"></td>
-            </tr>
-            <tr>
-                <td>邮箱</td>
-                <td><input type="text" name="em"></td>
-            </tr>
-            <tr>
-                <td>年龄</td>
-                <td><input type="text" name="age"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="注册"></td>
-                <td><input type="reset" value="重置"></td>
-            </tr>
-        </table>
-    </form>
-</center>
+    <center>
+        <%--套一个form表单,需要触发ajax ,id=fm为了下面ajax能获取为id的form表单--%>
+        <form action="javascript:void(0)" id="fm">
+            <table border="1px">
+                <tr>
+                    <td>昵称</td>
+                    <td><input type="text" name="nick"></td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td><input type="text" name="pwd"></td>
+                </tr>
+                <tr>
+                    <td>手机号</td>
+                    <td><input type="text" name="phone"></td>
+                </tr>
+                <tr>
+                    <td>邮箱</td>
+                    <td><input type="text" name="em"></td>
+                </tr>
+                <tr>
+                    <td>年龄</td>
+                    <td><input type="text" name="age"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="注册"></td>
+                    <td><input type="reset" value="重置"></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+
     <%--给type=submit添加时间，当点击注册，要通过ajax把上面注册信息值全部变成json--%>
     <%--然后传到IndexController中addQQ方法中去接收--%>
     <script type="text/javascript">
         $(function(){
             $("input[type=submit]").click(function(){
-                var jsonData = $("#fm").serializeObject();  //jsonData是json型的字符串
-                alert(jsonData);
+                var jsonData = $("#fm").serializeObject();
+                alert(jsonData);    //得到的jsonData是json型的字符串
+                alert(JSON.stringify(jsonData));    //把json字符串转json
                 $.ajax({
-                    url:"<%=basePath %>/addQQ.do",
+                    url:"<%=basePath %>/addQQ.do",  //这说明是从jsp界面跳到controller层，反过来了
                     type:"post",
                     dataType:"json",
-                    data:{},
-                    success:function (result) {
+                    contentType: 'application/json',
+                    data:JSON.stringify(jsonData),
+                    success:function(result) {
                         alert(result)       //alert是打印的意思
                     }
-                    
-
                 })
+
+
             })
         });
 
