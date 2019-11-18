@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int saveBank(String username, Float money) {
+
         return userMapper.insertBank(username, money);
     }
 
