@@ -16,6 +16,7 @@
 <body>
     <center>
         <%--套一个form表单,需要触发ajax ,id=fm为了下面ajax能获取为id的form表单--%>
+        <%--触发ajax，在后面写一个ajax用于后台controller层接收submit请求--%>
         <form action="javascript:void(0)" id="fm">
             <table border="1px">
                 <tr>
@@ -48,6 +49,7 @@
 
     <%--给type=submit添加时间，当点击注册，要通过ajax把上面注册信息值全部变成json--%>
     <%--然后传到IndexController中addQQ方法中去接收--%>
+    <%--其实写ajax就是因为上面type=submit 表明我们后台需要接收，即在controller层写一个下面指定的addQQ.do接口--%>
     <script type="text/javascript">
         $(function(){
             $("input[type=submit]").click(function(){
