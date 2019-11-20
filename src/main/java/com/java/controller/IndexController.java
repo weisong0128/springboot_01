@@ -27,7 +27,7 @@ public class IndexController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/index1")
+    @RequestMapping(value = "/index1",method = RequestMethod.GET)
     public String index1(){
 
         return "index1"; //代表转发到index1下，至于具体在哪个路径下看视图解析器配置

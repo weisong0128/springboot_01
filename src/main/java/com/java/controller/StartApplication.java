@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * description: 描述
@@ -13,6 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @SpringBootApplication(scanBasePackages = {"com.java.controller","com.java.service.impl","com.java.tasks"})
 @MapperScan(basePackages = {"com.java.mapper"}) //开启mybatis注解
+//@EnableWebMvc
 //@EnableScheduling //开启定时任务
 //@ServletComponentScan(basePackages = "com.java.filters") //开启过滤器
 public class StartApplication {
